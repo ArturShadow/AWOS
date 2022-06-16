@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('empleados','App\Http\Controllers\EmpleadoController@getEmpleados');
+
+Route::get('empleados/{id}','App\Http\Controllers\EmpleadoController@getEmpleadoById');
+
+Route::post('empleados','App\Http\Controllers\EmpleadoController@addEmpleados');
+
+Route::put('empleados/{id}', 'App\Http\Controllers\EmpleadoController@updateEmpleados');

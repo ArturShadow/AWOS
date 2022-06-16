@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class maestros extends Model
+class Empleado extends Model
 {
-    use HasFactory;
+    public $timestamp = false;
+    protected $fillable = ["id", "nombreEmpleado", "noEmpleado"];
 }
