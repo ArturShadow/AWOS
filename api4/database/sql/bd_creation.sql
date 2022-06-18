@@ -1,0 +1,1 @@
+INSERT INTO empleados(nombreEmpleado, noEmpleado) VALUES ("arturo",5044);

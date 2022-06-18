@@ -1,0 +1,16 @@
+Se deberá crear base de  datos   con las tablas
+Cliente
+Nombre
+Apellido Paterno
+Apellido Materno
+Edad
+E mail
+Vendedor
+Nombre
+Apellido Paterno
+Apellido Materno
+Numero de Empleado
+
+Esta información será guardada en la base de datos  de nombre Eureka  
+Crear  Aplicación API   con nombre SitioEureka
+Permitir agregar, modificar y actualizar.
