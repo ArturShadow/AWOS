@@ -6,4 +6,4 @@ CREATE table usuario(
     apellidos VARCHAR(250),
     estado INT,
     correo VARCHAR(250)
-);
+);    
