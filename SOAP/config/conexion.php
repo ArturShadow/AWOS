@@ -12,6 +12,6 @@
         }
 
         public function set_name(){
-            return $this->BaseDatos->query("SET NAMES 'utf'");
+            return $this->BaseDatos->query("SET NAMES 'utf8'");
         }
     }

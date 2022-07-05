@@ -1,13 +1,17 @@
 <?php
-
-require_once "./vendor/econea/nusoap/src/nusoap.php";
-
+//Requeririimos el archivo de la libreria
+require_once "./vendor/econea/nusoap/src/nusoap.php"; 
+//Establecemos  el nombre del servicio
 $nameSpace="RegistrarUsuarios";
-$server= new soap_server();
-$server->configureWSDL("SoapService",$nameSpace);
+//Cramos una instancia del servidor
+$server= new soap_server(); 
+//Configuramos el wsdl
+$server->configureWSDL("SoapService",$nameSpace); 
+ // Establecemos el namespace
 $server->wsdl->SchemaTargetNamespace = $nameSpace;
 
-$server->wsdl->addComplexType(
+// Establecemos los campos de la base de datos
+$server->wsdl->addComplexType( 
     'insertusuarios',
     'complexType',
     'struct',
@@ -20,6 +24,7 @@ $server->wsdl->addComplexType(
         'estado'=>array('name'=>'estado','type'=>'xsd:integer'),
     )
 );
+ //Establecemos la respuesta cuando la api sea consumida
 $server->wsdl->addComplexType(
     'response',
     'complexType',
@@ -30,8 +35,8 @@ $server->wsdl->addComplexType(
         'Resultado'=>array('name'=>'Resultado','type'=>'xsd:boolean')
     )
 );
-
-$server->register(
+// registramos la funcion
+$server->register( 
     "response",
     array('insertusuarios'=>'tns:insertusuarios'),
     array('insertusuarios'=>'tns:response'),
@@ -39,22 +44,26 @@ $server->register(
     false,
     'rpc',
     'encoded',
-    'inserta una usuario'
+    'inserta un usuario'
 );
-
-function InsertusuarioService($request)
+//Funcion que regresa true si 
+function InsertUsuarioService($request)  
 {
+    // requirimos los archivos de conexion y usuario
     require_once "./config/conexion.php";
     require_once "./Models/Usuario.php";
 
+    //Creamos una instancia de usuario
     $usuario = new Usuario();
-    $usuario->insert_usuario($request["nombre"],$request["apellidos"], $request["correo"], $request["estado"]);
+    // Le pasamos los datos recibidos por rquest
+    $usuario->Insert_usuario($request["nombre"],$request["apellidos"],$request["correo"],$request["estado"]);
 
     return array(
         'Resultado'=> true
     );
 }
 
+// pasar nuestros datos al servicio
 $POST_DATA= file_get_contents('php://input');
 $server->service($POST_DATA);
 exit();
