@@ -16,7 +16,6 @@ $server->wsdl->addComplexType(
     'complexType',
     'struct',
     'all',
-    '',
     array(
         'nombre'=>array('name'=>'nombre','type'=>'xsd:string'),
         'apellidos'=>array('name'=>'apellidos','type'=>'xsd:string'),
@@ -30,7 +29,6 @@ $server->wsdl->addComplexType(
     'complexType',
     'struct',
     'all',
-    '',
     array(
         'Resultado'=>array('name'=>'Resultado','type'=>'xsd:boolean')
     )
@@ -47,7 +45,7 @@ $server->register(
     'inserta un usuario'
 );
 //Funcion que regresa true si 
-function InsertUsuarioService($request)  
+function insertUsuarioService($request)  
 {
     // requirimos los archivos de conexion y usuario
     require_once "./config/conexion.php";
@@ -56,7 +54,7 @@ function InsertUsuarioService($request)
     //Creamos una instancia de usuario
     $usuario = new Usuario();
     // Le pasamos los datos recibidos por rquest
-    $usuario->Insert_usuario($request["nombre"],$request["apellidos"],$request["correo"],$request["estado"]);
+    $usuario->insert_usuario($request["nombre"],$request["apellidos"],$request["correo"],$request["estado"]);
 
     return array(
         'Resultado'=> true
