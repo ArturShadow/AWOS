@@ -16,6 +16,7 @@ $server->wsdl->addComplexType(
     'complexType',
     'struct',
     'all',
+    '',
     array(
         'nombre'=>array('name'=>'nombre','type'=>'xsd:string'),
         'apellidos'=>array('name'=>'apellidos','type'=>'xsd:string'),
@@ -29,6 +30,7 @@ $server->wsdl->addComplexType(
     'complexType',
     'struct',
     'all',
+    '',
     array(
         'Resultado'=>array('name'=>'Resultado','type'=>'xsd:boolean')
     )
@@ -44,6 +46,7 @@ $server->register(
     'encoded',
     'inserta un usuario'
 );
+
 //Funcion que regresa true si 
 function insertUsuarioService($request)  
 {
