@@ -2,13 +2,13 @@
 //Requeririimos el archivo de la libreria
 require_once "./vendor/econea/nusoap/src/nusoap.php"; 
 //Establecemos  el nombre del servicio
-$nameSpace="RegistrarUsuarios";
+$namespace="RegistrarUsuarios";
 //Cramos una instancia del servidor
 $server= new soap_server(); 
 //Configuramos el wsdl
-$server->configureWSDL("SoapService",$nameSpace); 
+$server->configureWSDL("SoapService",$namespace); 
  // Establecemos el namespace
-$server->wsdl->SchemaTargetNamespace = $nameSpace;
+$server->wsdl->SchemaTargetNamespace = $namespace;
 
 // Establecemos los campos de la base de datos
 $server->wsdl->addComplexType( 
@@ -21,7 +21,7 @@ $server->wsdl->addComplexType(
         'nombre'=>array('name'=>'nombre','type'=>'xsd:string'),
         'apellidos'=>array('name'=>'apellidos','type'=>'xsd:string'),
         'correo'=>array('name'=>'correo','type'=>'xsd:string'),
-        'estado'=>array('name'=>'estado','type'=>'xsd:integer'),
+        'estado'=>array('name'=>'estado','type'=>'xsd:string'),
     )
 );
  //Establecemos la respuesta cuando la api sea consumida
@@ -32,15 +32,15 @@ $server->wsdl->addComplexType(
     'all',
     '',
     array(
-        'Resultado'=>array('name'=>'Resultado','type'=>'xsd:boolean')
+        'Resultado'=>array('name'=>'Resultado','type'=>'xsd:boolean'),
     )
 );
 // registramos la funcion
 $server->register( 
-    "response",
-    array('insertusuarios'=>'tns:insertusuarios'),
-    array('insertusuarios'=>'tns:response'),
-    $nameSpace,
+    "insertUsuarioService",
+    array("insertusuarios"=>"tns:insertusuarios"),
+    array("insertusuarios"=>"tns:response"),
+    $namespace,
     false,
     'rpc',
     'encoded',
@@ -51,7 +51,7 @@ $server->register(
 function insertUsuarioService($request)  
 {
     // requirimos los archivos de conexion y usuario
-    require_once "./config/conexion.php";
+    require_once "./config/Conectar.php";
     require_once "./Models/Usuario.php";
 
     //Creamos una instancia de usuario
