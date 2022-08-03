@@ -6,7 +6,7 @@
                 $conectar=$this->$BaseDatos = new PDO('mysql:host=localhost;dbnname=soapApi','root','');
                 return $conectar;
             } catch (Exception $e) {
-                print"Error!! ".$e->  getMessage()." <br>";
+                print"Error|| ".$e->  getMessage()." <br>";
                 die();
             }
         }

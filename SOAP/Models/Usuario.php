@@ -5,12 +5,12 @@ class Usuario extends Conectar{
         $conectar = parent::conecxion();
         parent::set_name();
 
-        $sql= "INSERT INTO usuario(nombre, apellidos, estado, correo) VALUES (?,?,?,?)";
+        $sql= "INSERT INTO usuario(nombre, apellidos, correo, estado) VALUES (?,?,?,?)";
         $stmt=$conectar->prepare($sql);
-        $stmt->$conectar->prepare(1,$nombre);
-        $stmt->$conectar->prepare(2,$apellidos);
-        $stmt->$conectar->prepare(3,$estado);
-        $stmt->$conectar->prepare(4,$correo);
+        $stmt->bindVaule(1,$nombre);
+        $stmt->bindValue(2,$apellidos);
+        $stmt->bindValue(3,$correo);
+        $stmt->bindValue(4,$estado);
         $stmt->execute();
     }
 }
