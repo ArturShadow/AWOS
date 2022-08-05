@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,14 +12,15 @@
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="container" style="margin-top: 100px;">
         <div class="row justify-content-center">
             <div class="col-md-6 col- offset-1" aling="center">
                 <img src="./img/logo.png" alt="" srcset=""><br><br><br>
                 <form action="">
-                    <input type="email" name="email" placeholder="Email" id="" class="form-control">
-                    <input type="password" name="password" id="" placeholder="Password" class="form-control">
+                    <input type="email" name="email" placeholder="Email" id="email-text" class="form-control">
+                    <input type="password" name="password" id="pass-text" placeholder="Password" class="form-control">
                     <button type="submit">Log in</button>
                     <input type="button" name="btn-facebook" value="Login with Facebook" onclick="login()">
                 </form>
@@ -26,7 +28,12 @@
 
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+
+    <script src="./js/loginFacebook.js"></script>
 </body>
+
 </html>
