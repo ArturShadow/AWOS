@@ -1,19 +1,36 @@
 var persona = { userID: "", name: "", accessToken: "", picture: "", email: "" };
+window.fbAsyncInit = function () {
+    FB.init({
+        appId: '3178375025763539',
+        autoLogAppEvent: true,
+        xfbml: true,
+        version: 'v14.0'
+    });
+
+    // FB.AppEvents.logPageView();
+    // FB.getLoginStatus(function (response) {
+    //     // statusChangeCallback(response);
+    //     console.log(response);
+        
+    // });
+
+};
+
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) { return; }
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 function login() {
 
     FB.login(function (response) {
-        console.log(response);  
+        console.log(response);
         if (response.status == "connected") {
-
-
-
             persona.userID = response.authResponse.userID;
-
             persona.accessToken = response.authResponse.accessToken;
-
-            
-
             FB.api('/me?fields=id,name,first_name,last_name,email,picture.type(large)', function (userData) {
                 console.log(userData);
                 
@@ -27,40 +44,17 @@ function login() {
                     method: 'POST',
                     data:persona,
                     dataType:'text',
-                    succes: function(serverResponse){
+                    success: function(serverResponse){
                         if(serverResponse=='success'){
                             window.location = 'index.php';
                         }
                     }
                 })
             })
-
+            
         }
         
     }, { scope: 'public_profile, email' });
 }
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '3178375025763539',
-            autoLogAppEvent: true,
-            xfbml: true,
-            version: 'v14.0'
-        });
-    
-        FB.AppEvents.logPageView();
-    
-    };
-    
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) { return; }
-        js = d.createElement(s); js.id = id;
-        js.src = "https:onnect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    
-    FB.getLoginStatus(function (response) {
-        statusChangeCallback(response);
-    });
 
 
