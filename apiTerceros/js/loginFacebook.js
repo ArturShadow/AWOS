@@ -3,6 +3,7 @@ var persona = { userID: "", name: "", accessToken: "", picture: "", email: "" };
 function login() {
 
     FB.login(function (response) {
+        console.log(response);  
         if (response.status == "connected") {
 
 
@@ -11,7 +12,7 @@ function login() {
 
             persona.accessToken = response.authResponse.accessToken;
 
-            //5
+            
 
             FB.api('/me?fields=id,name,first_name,last_name,email,picture.type(large)', function (userData) {
                 console.log(userData);
@@ -54,7 +55,7 @@ function login() {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) { return; }
         js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        js.src = "https:onnect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
     
