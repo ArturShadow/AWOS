@@ -32,7 +32,8 @@ function login() {
             persona.userID = response.authResponse.userID;
             persona.accessToken = response.authResponse.accessToken;
             FB.api('/me?fields=id,name,first_name,last_name,email,picture.type(large)', function (userData) {
-                console.log(userData);
+                console.log("User data");
+            console.log(userData);
                 
 
                 persona.name = userData.name;
@@ -48,6 +49,8 @@ function login() {
                         if(serverResponse=='success'){
                             window.location = 'index.php';
                         }
+                        // console.log("Server");
+                        // console.log(serverResponse);
                     }
                 })
             })

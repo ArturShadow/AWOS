@@ -1,6 +1,12 @@
 <?php 
     session_start();
-    if(isset($_REQUEST[''])){}
+    if(isset($_REQUEST['userID'])){
+        $_SESSION['userID'] = $_REQUEST['userID'];
+        $_SESSION['email'] = $_REQUEST['email'];
+        $_SESSION['name'] = $_REQUEST['name'];
+        $_SESSION['picture'] = $_REQUEST['picture'];
+        $_SESSION['accessToken'] = $_REQUEST['accessToken'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +38,7 @@
 
         </div>
     </div>
+    <a href="index.php">Ir inicio</a>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
