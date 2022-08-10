@@ -33,10 +33,11 @@
     </div>
     <div>
         <img src="<?php echo $_SESSION['picture'];?>">
-        <p>Name:<?php echo $_SESSION['name'];?></p>
+        <p>Name: <?php echo $_SESSION['name'];?></p>
         <p>Email: <?php echo $_SESSION['email'];?></p>
         <p>Access Token: <?php echo $_SESSION['accessToken'];?></p>
         <a href="login.php">Login</a>
+        <a href="logout.php">Logout</a>
     </div>
 </body>
 
